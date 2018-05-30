@@ -41,7 +41,6 @@ public class SimpleKubSeleniumGridTest {
 
 	@Test
 	public void test() throws Exception {
-		//Comment1
 		System.out.println("Page Title:"+driver.getTitle());
 		driver.findElement(By.id("lst-ib")).sendKeys("Kubernetes");
 		System.out.println("Data entered to search");
