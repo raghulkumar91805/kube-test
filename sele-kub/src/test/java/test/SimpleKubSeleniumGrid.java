@@ -1,7 +1,11 @@
 package test;
 
 import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.net.URL;
+import java.util.Properties;
 
 import org.junit.After;
 import org.junit.Before;
@@ -19,19 +23,29 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class SimpleKubSeleniumGrid {
 	WebDriver driver;
 	String url="https://www.google.com/";
+	Properties pro;
 	@Before
 	public void setUp() throws Exception {
-		DesiredCapabilities dcp = new DesiredCapabilities();
+		try{
+			File src= new File("Property.properties");
+			FileInputStream fis = new FileInputStream(src);
+			pro=new Properties();
+			pro.load(fis);
+		}catch(Exception e){
+			System.out.println("Exception is=="+e.getMessage());
+		}
+		/*DesiredCapabilities dcp = new DesiredCapabilities();
 		dcp.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
 		dcp.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
 		dcp.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE, true);
 		dcp.setCapability(CapabilityType.SUPPORTS_NETWORK_CONNECTION, true);
-		dcp.setCapability("name", "KubernetesGridTest");
+		dcp.setCapability("name", "GoogleTest");
 		dcp.setCapability("idleTimeout", 150);
-		driver = new RemoteWebDriver(new URL("http://35.193.7.170:4444/wd/hub"),dcp);
-		/*System.setProperty("webdriver.chrome.driver","D:\\driver\\chromedriver_win32\\chromedriver.exe");
+		//driver = new RemoteWebDriver(new URL("http://35.193.7.170:4444/wd/hub"),dcp);
+		driver = new RemoteWebDriver(new URL(pro.getProperty("selenium.url")),dcp);*/
+		System.setProperty("webdriver.chrome.driver",pro.getProperty("chrome.driver").toString());
 		//Open browser instance
-		driver = new ChromeDriver();*/
+		driver = new ChromeDriver();
 		driver.get(url);
 		System.out.println("Opening Google");
 		Thread.sleep(100);
@@ -40,11 +54,13 @@ public class SimpleKubSeleniumGrid {
 	@Test
 	public void test() throws Exception {
 		System.out.println("Page Title:"+driver.getTitle());
-		driver.findElement(By.id("lst-ib")).sendKeys("Kubernetes");
+		//driver.findElement(By.id("lst-ib")).sendKeys("Kubernetes");
+		driver.findElement(By.id(pro.getProperty("searchbox"))).sendKeys(pro.getProperty("searchword"));
 		System.out.println("Data entered to search");
 		Thread.sleep(100);
 		//driver.findElement(By.name("btnK")).click();
-		driver.findElement(By.id("lst-ib")).sendKeys(Keys.ENTER);
+		//right driver.findElement(By.id("lst-ib")).sendKeys(Keys.ENTER);
+		driver.findElement(By.id(pro.getProperty("searchbox"))).sendKeys(Keys.ENTER);
 		System.out.println("search clicked");
 		Thread.sleep(100);
 	}
@@ -53,4 +69,5 @@ public class SimpleKubSeleniumGrid {
 	public void tearDown() throws Exception {
 		driver.close();
 	}
+	
 }
