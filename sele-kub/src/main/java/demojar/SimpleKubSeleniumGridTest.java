@@ -20,8 +20,6 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import test.SimpleKubSeleniumGrid;
-
 public class SimpleKubSeleniumGridTest {
 
 	WebDriver driver;
@@ -33,7 +31,7 @@ public class SimpleKubSeleniumGridTest {
 			/*File src= new File("Property.properties");
 			FileInputStream fis = new FileInputStream(src);*/
 			pro=new Properties();
-			pro.load(SimpleKubSeleniumGrid.class.getResourceAsStream("/Property.properties"));
+			pro.load(SimpleKubSeleniumGridTest.class.getResourceAsStream("/Property.properties"));
 			//pro.load(fis);
 		}catch(Exception e){
 			System.out.println("Exception is=="+e.getMessage());
