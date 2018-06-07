@@ -27,10 +27,10 @@ public class SimpleKubSeleniumGrid {
 	@Before
 	public void setUp() throws Exception {
 		try{
-			File src= new File("Property.properties");
-			FileInputStream fis = new FileInputStream(src);
+			//File src= new File("Property.properties");
+			//FileInputStream fis = new FileInputStream(src);
 			pro=new Properties();
-			pro.load(fis);
+			pro.load(SimpleKubSeleniumGrid.class.getResourceAsStream("/Property.properties"));
 		}catch(Exception e){
 			System.out.println("Exception is=="+e.getMessage());
 		}

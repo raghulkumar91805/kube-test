@@ -20,6 +20,8 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import test.SimpleKubSeleniumGrid;
+
 public class SimpleKubSeleniumGridTest {
 
 	WebDriver driver;
@@ -28,10 +30,11 @@ public class SimpleKubSeleniumGridTest {
 	@Before
 	public void setUp() throws Exception {
 		try{
-			File src= new File("Property.properties");
-			FileInputStream fis = new FileInputStream(src);
+			/*File src= new File("Property.properties");
+			FileInputStream fis = new FileInputStream(src);*/
 			pro=new Properties();
-			pro.load(fis);
+			pro.load(SimpleKubSeleniumGrid.class.getResourceAsStream("/Property.properties"));
+			//pro.load(fis);
 		}catch(Exception e){
 			System.out.println("Exception is=="+e.getMessage());
 		}
@@ -43,6 +46,7 @@ public class SimpleKubSeleniumGridTest {
 		dcp.setCapability("name", "KubernetesGridTest");
 		dcp.setCapability("idleTimeout", 150);
 		//driver = new RemoteWebDriver(new URL("http://35.193.7.170:4444/wd/hub"),dcp);
+		//System.out.println(pro.getProperty("selenium.url"));
 		driver = new RemoteWebDriver(new URL(pro.getProperty("selenium.url")),dcp);
 		//System.setProperty("webdriver.chrome.driver","D:\\driver\\chromedriver_win32\\chromedriver.exe");
 		/*System.setProperty("webdriver.chrome.driver",pro.getProperty("chrome.driver").toString());
