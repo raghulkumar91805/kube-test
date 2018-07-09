@@ -63,8 +63,8 @@ public class SimpleKubSeleniumGridTest {
 		System.out.println("Data entered to search");
 		Thread.sleep(100);
 		//driver.findElement(By.name("btnK")).click();
-		driver.findElement(By.id("lst-b")).sendKeys(Keys.ENTER);
-		//driver.findElement(By.id(pro.getProperty("searchbox"))).sendKeys(Keys.ENTER);
+		//driver.findElement(By.id("lst-b")).sendKeys(Keys.ENTER);
+		driver.findElement(By.id(pro.getProperty("searchbox"))).sendKeys(Keys.ENTER);
 		System.out.println("search clicked");
 		Thread.sleep(100);
 	}
