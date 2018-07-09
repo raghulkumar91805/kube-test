@@ -34,7 +34,7 @@ public class SimpleKubSeleniumGrid {
 		}catch(Exception e){
 			System.out.println("Exception is=="+e.getMessage());
 		}
-		/*DesiredCapabilities dcp = new DesiredCapabilities();
+		DesiredCapabilities dcp = new DesiredCapabilities();
 		dcp.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
 		dcp.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
 		dcp.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE, true);
@@ -42,10 +42,10 @@ public class SimpleKubSeleniumGrid {
 		dcp.setCapability("name", "GoogleTest");
 		dcp.setCapability("idleTimeout", 150);
 		//driver = new RemoteWebDriver(new URL("http://35.193.7.170:4444/wd/hub"),dcp);
-		driver = new RemoteWebDriver(new URL(pro.getProperty("selenium.url")),dcp);*/
-		System.setProperty("webdriver.chrome.driver",pro.getProperty("chrome.driver").toString());
+		driver = new RemoteWebDriver(new URL(pro.getProperty("selenium.url")),dcp);
+		//System.setProperty("webdriver.chrome.driver",pro.getProperty("chrome.driver").toString());
 		//Open browser instance
-		driver = new ChromeDriver();
+		//driver = new ChromeDriver();
 		driver.get(url);
 		System.out.println("Opening Google");
 		Thread.sleep(100);
