@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -43,9 +44,9 @@ public class SimpleKubSeleniumGrid {
 		dcp.setCapability("idleTimeout", 150);
 		//driver = new RemoteWebDriver(new URL("http://35.193.7.170:4444/wd/hub"),dcp);
 		driver = new RemoteWebDriver(new URL(pro.getProperty("selenium.url")),dcp);
-		//System.setProperty("webdriver.chrome.driver",pro.getProperty("chrome.driver").toString());
+		/*System.setProperty("webdriver.chrome.driver",pro.getProperty("chrome.driver").toString());
 		//Open browser instance
-		//driver = new ChromeDriver();
+		driver = new ChromeDriver();*/
 		driver.get(url);
 		System.out.println("Opening Google");
 		Thread.sleep(100);
@@ -62,6 +63,8 @@ public class SimpleKubSeleniumGrid {
 		//right driver.findElement(By.id("lst-ib")).sendKeys(Keys.ENTER);
 		driver.findElement(By.id(pro.getProperty("searchbox"))).sendKeys(Keys.ENTER);
 		System.out.println("search clicked");
+		Cookie cookie = new Cookie("zaleniumTestPassed", "true");
+	    driver.manage().addCookie(cookie);
 		Thread.sleep(100);
 	}
 

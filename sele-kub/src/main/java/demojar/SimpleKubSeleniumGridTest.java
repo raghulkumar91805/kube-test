@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -41,7 +42,7 @@ public class SimpleKubSeleniumGridTest {
 		dcp.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
 		dcp.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE, true);
 		dcp.setCapability(CapabilityType.SUPPORTS_NETWORK_CONNECTION, true);
-		dcp.setCapability("name", "KubernetesGridTest");
+		dcp.setCapability("name", "GoogleTest");
 		dcp.setCapability("idleTimeout", 150);
 		//driver = new RemoteWebDriver(new URL("http://35.193.7.170:4444/wd/hub"),dcp);
 		//System.out.println(pro.getProperty("selenium.url"));
@@ -66,6 +67,8 @@ public class SimpleKubSeleniumGridTest {
 		//driver.findElement(By.id("lst-b")).sendKeys(Keys.ENTER);
 		driver.findElement(By.id(pro.getProperty("searchbox"))).sendKeys(Keys.ENTER);
 		System.out.println("search clicked");
+		Cookie cookie = new Cookie("zaleniumTestPassed", "true");
+	    driver.manage().addCookie(cookie);
 		Thread.sleep(100);
 	}
 
