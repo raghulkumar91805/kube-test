@@ -42,8 +42,10 @@ public class SimpleKubSeleniumGridTest {
 			System.out.println("Exception is=="+e.getMessage());
 		}
 		DesiredCapabilities dcp = new DesiredCapabilities();
-		dcp.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
-		dcp.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+		//dcp.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);correct
+		//dcp.setCapability(CapabilityType.PLATFORM, Platform.LINUX);correct
+		dcp.setCapability(CapabilityType.BROWSER_NAME, BrowserType.IE);
+		dcp.setCapability(CapabilityType.PLATFORM, Platform.WINDOWS);
 		dcp.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE, true);
 		dcp.setCapability(CapabilityType.SUPPORTS_NETWORK_CONNECTION, true);
 		dcp.setCapability("name", "GoogleTest");
