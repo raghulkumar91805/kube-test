@@ -67,17 +67,17 @@ WebDriver driver;
 	public void test() throws Exception {
 		System.out.println("Page Title:"+driver.getTitle());
 		//driver.findElement(By.id("lst-ib")).sendKeys("Kubernetes");
-		//driver.findElement(By.id(pro.getProperty("searchbox"))).sendKeys(pro.getProperty("searchword"));//works
-		wait.until(ExpectedConditions.elementToBeClickable(By.id(pro.getProperty("searchbox")))).sendKeys(pro.getProperty("searchword"));
+		driver.findElement(By.id(pro.getProperty("searchbox"))).sendKeys(pro.getProperty("searchword"));
+		//wait.until(ExpectedConditions.elementToBeClickable(By.id(pro.getProperty("searchbox")))).sendKeys(pro.getProperty("searchword"));
 		System.out.println("Data entered to search");
 		Thread.sleep(100);
 		//driver.findElement(By.name("btnK")).click();
 		//driver.findElement(By.id("lst-b")).sendKeys(Keys.ENTER);
-		//driver.findElement(By.id(pro.getProperty("searchbox"))).sendKeys(Keys.ENTER);//works
-		wait.until(ExpectedConditions.elementToBeClickable(By.id(pro.getProperty("searchbox")))).sendKeys(Keys.ENTER);
+		driver.findElement(By.id(pro.getProperty("searchbox"))).sendKeys(Keys.ENTER);
+		//wait.until(ExpectedConditions.elementToBeClickable(By.id(pro.getProperty("searchbox")))).sendKeys(Keys.ENTER);
 		System.out.println("search clicked");
-		Cookie cookie = new Cookie("zaleniumTestPassed", "true");
-	    driver.manage().addCookie(cookie);
+		//Cookie cookie = new Cookie("zaleniumTestPassed", "true");
+	    //driver.manage().addCookie(cookie);
 		Thread.sleep(100);
 		}
 
