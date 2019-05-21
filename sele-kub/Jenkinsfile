@@ -1,5 +1,5 @@
 node{
-stage(‘SCM checkout’){
+stage(‘SCM Checkout’){
 git“https://github.com/raghulkumar91805/kube-test/”
 }
 stage(‘Build’){
