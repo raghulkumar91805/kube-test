@@ -1,8 +1,8 @@
 node {
-stage (‘SCM checkout’){
-git “https://github.com/raghulkumar91805/kube-test/”
+stage(‘SCM checkout’){
+git“https://github.com/raghulkumar91805/kube-test/”
 }
-stage (‘Build’){
+stage(‘Build’){
 dir(“src”) {
 sh “mvn clean install”
 }
