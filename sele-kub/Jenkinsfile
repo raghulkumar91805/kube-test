@@ -1,6 +1,6 @@
 node {
 stage (‘SCM checkout’){
-git “https://github.com/raghulkumar9180/kube-test/tree/master/sele-kub”
+git “https://github.com/raghulkumar91805/kube-test/tree/master/sele-kub”
 }
 stage (‘Build’){
 dir(“src”) {
