@@ -3,7 +3,7 @@ stage (‘SCM checkout’){
 git “https://github.com/raghulkumar91805/kube-test/tree/master/sele-kub”
 }
 stage (‘Build’){
-dir(“comtest”) {
+dir(“src”) {
 sh “mvn clean install”
 }
 dir(“comtest/target”) {
