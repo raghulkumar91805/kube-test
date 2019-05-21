@@ -1,6 +1,8 @@
 node{
-stage(‘SCM Checkout’){
-git“https://github.com/raghulkumar91805/kube-test/”
+stage (‘SCM Checkout’){
+      //checkout code from repo
+      checkout scm
+  git“https://github.com/raghulkumar91805/kube-test/”
 }
 stage(‘Build’){
 dir(“src”) {
